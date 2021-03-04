@@ -1,0 +1,23 @@
+id,gender,age,hypertension,alcohol_intake,heart_disease,Residence_type,avg_glucose_level,bmi,smoking_status,stroke
+9046,Male,67,147,2,1,Urban,228.69,36.6,formerly smoked,1
+51676,Female,61,135,4,0,Rural,202.21,N/A,never smoked,1
+31112,Male,80,115,3,1,Rural,105.92,32.5,never smoked,1
+60182,Female,49,125,2,0,Urban,171.23,34.4,smokes,1
+1665,Female,79,130,3,0,Rural,174.12,24,never smoked,1
+56669,Male,81,127,1,0,Urban,186.21,29,formerly smoked,1
+53882,Male,74,120,2,1,Rural,70.09,27.4,never smoked,1
+10434,Female,69,121,3,0,Urban,94.39,22.8,never smoked,1
+27419,Female,59,125,2,0,Rural,76.15,N/A,Unknown,1
+60491,Female,78,115,5,0,Urban,58.57,24.2,Unknown,1
+12109,Female,81,124,1,0,Rural,80.43,29.7,never smoked,1
+12095,Female,61,132,3,1,Rural,120.46,36.8,smokes,1
+12175,Female,54,120,3,0,Urban,104.51,27.3,smokes,1
+8213,Male,78,135,3,1,Urban,219.84,N/A,Unknown,1
+52236,Female,60,145,4,0,Rural,230.78,40.2,never smoked,0
+59752,Male,62,100,2,0,Urban,72.5,22.5,formerly smoked,0
+47005,Female,47,139,1,0,Urban,68.48,21.3,never smoked,0
+4750,Male,78,148,0,0,Urban,85.03,26.1,formerly smoked,0
+65127,Female,35,132,4,0,Urban,80.76,28.8,smokes,0
+4498,Male,71,151,5,1,Urban,204.98,N/A,formerly smoked,0
+32203,Female,57,140,2,0,Rural,95.36,32.4,formerly smoked,0
+27436,Male,12,97,0,0,Urban,110.33,20.4,Unknown,0
