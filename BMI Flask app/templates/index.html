@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>BMI-calculator</title>
+
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!--auther: Tangqi Feng-->
+    <script type="text/javascript" src="{{mainJs}}"></script>
+    <link rel="stylesheet" href="{{indexCss}}" type="text/css" />
+</head>
+
+<body background={{bg}}>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- the usage of bootstrap class:row clearfix,col-md-8 column
+         is get references of:
+         http://www.runoob.com/try/bootstrap/layoutit/#
+         or https://v4-alpha.getbootstrap.com/components/forms/-->
+
+    <!--the page container-->
+    <div class="container" >
+
+        <!--title part               author:Tangqi Feng-->
+        <div class="row clearfix" style="background-image:url({{titleBg}})">
+            <div align=center>
+                <img src="{{titlePic}}" />
+            </div>
+            <h4><span style="color: white;">(ideal weight calculator)</span></h4>
+        </div>
+
+        <!--introduction & log in parts-->
+        <div class="row clearfix" id="introduction">
+
+            <!--introduction part                    author: Zehua Yu-->
+            <div class="col-md-8 column" >
+                <p height=100 align="left" style="font-size:18px; font-weight:600; ">BMI Equation: BMI = Weight（Kilograms） / Height^2(Meters)</p>
+                <div style="height:auto!important;height:20px;border:1px ;font-size:16px;">what is BMI : if you want to know more click
+                    <label id="method" type="button" style="color:orange; width:100px;" onclick="var sta = document.getElementById('popTitle');
+                          var mod = document.getElementById('method');
+                          if(sta.style.display == 'none')
+                          {
+                          sta.style.display='';
+                          mod.innerText='retraction';
+                          mod.innerHTML='retraction';
+                          }
+                        else
+                          {
+                          sta.style.display='none';
+                          mod.innerText='here';
+                          mod.innerHTML='here';};">here
+
+                    </label>
+
+                    <div id="popTitle" visibility="hidden" style="display:none;">
+                        <pre style="word-break:break-all;width:500px;height:100px;color:orange;">
+Body mass index (BMI) is a measure of body fat based on your
+weight in relation to your height, and applies to most adult
+ men and women aged 20 and over. For children aged 2and over
+ , BMI percentile is the best assessment of body fat.
+                            </pre>
+                    </div>
+                </div>
+                <p style="color:grey;">(if you want to know more, you need to login!)</p>
+            </div>
+
+           
+            <!-- log in part                  author: Tangqi Feng -->
+            <div class="col-md-4 column" id="login">
+                <img width="150" height="55" src="{{login}}" />
+                <form action="/login" method="post">
+                    <p class="text1">user name：</p>
+                    <p class="text1">
+                        <input name="username" type="text" style="width: 240px; height: 25px;" />
+                    </p>
+                    <p class="text1">password：</p>
+                    <p class="text1">
+                        <input name="password" type="password" style="width: 240px; height: 25px;" />
+                    </p>
+                    <p class="text3">{{get_flashed_messages()[0]}} </p>
+                    <p class="text1">
+
+                        <button onclick="submit" style="margin: 0; padding: 0; border-width: 0;"><img width="70" height="25" src="{{loginButton}}" /></button>
+                        <a style="font-size:10px; margin-left:15px;" href="/register">REGISTER NOW !</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+
+        <!-- main & inches to cm convert caculator -->
+        <div class="row clearfix" id="main&calculator">
+
+            <!-- main                             author: Tangqi Feng   -->
+            <!--<div class="col-md-12 column" id="main" style="background-image:url({{modelBg}})">
+                <table class="col-md-12 column" align:center>
+                    <tr>
+                        <td align=center style="height:30px; font-size:18px; color:green; ">
+                            <br>adult height-weight calculate
+                            <hr/>
+                        </td>
+                    </tr>
+		    -->
+		    <!--
+                    <tr>
+
+                        <form name="form1">
+                            <td class="tableForm1">
+                                Your Height：
+                                <br>
+                                <input class="text2" size=16 name=height style="width: 240px; height: 30px;">&nbsp;(cm)
+                                <br>
+                                <br> Your Weight：
+                                <br>
+                                <input class="text2" name=weight style="width: 240px; height: 30px;">&nbsp;(kg)
+                                <br>
+                                <br> your gender：
+                                <select size=1 name=sex style="margin-left:20px;">
+                                    <option value=0 selected>male</option>
+                                    <option value=1>female</option>
+                                </select>
+                                <br>
+                                <br>
+                                <input class="button" onclick=lookme(this.form) type=button value=submit name=button style="margin-left:50px;">
+                                <input class="button" onclick=ClearForm() type=reset value="  reset  " name=reset style="margin-left:30px;">
+                            </td>
+                        </form>
+                    </tr>
+                </table>
+            </div>
+	    
+
+        </div>
+	<-->
+
+        <!--result display          author: Tangqi Feng -->
+	<!--
+        <div class="row clearfix" id="result" style="background-image:url({{modelBg}})">
+            <table class="col-md-12 column" height="200px">
+                <form name="form2">
+                    <tr>
+                        <td align=center colspan="2" style="font-size:18px; color:green; ">result
+                            <hr/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text1" style="padding-left: 30%;">
+                            <span class="text2">your Ideal Weight：</span>
+                            <input onfocus=blur() size=4 name="legendweight" style="border:0; background:none;">&nbsp;
+                            <span class="text2">kg</span>
+                        </td>
+                        <td class="text1" style="padding-right: 180px;">
+                            <span class="text2">Your BMI：</span>
+                            <input onfocus=blur() size=3 name="bmi" style="border:0; background:none;">&nbsp;&nbsp;&nbsp;
+                            <span class="text2">(21-22 is the best)</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text1" align=center colspan="2">
+                            <span class="text2">Your Current State：</span>
+                            <textarea onfocus=blur() name=nowstat cols=40 style="border:0; background:none;"></textarea>
+                        </td>
+                    </tr>
+                </form>
+            </table>
+        </div>
+	-->
+
+        <!--extension info-->
+        <div class="row clearfix" id="exInfo" >
+        
+
+            <div id="tab">
+                <img id="exPic" src="{{ex1}}" alt="could you find out me(你来找我啊)" width=1160 height=400 style="display: block;" />
+                <img id="exPic" src="{{ex2}}" alt="could you find out me（你来找我啊）" width=1160 height=400 style="display: block;" />
+                <!--img id="exPic" src="{{ex3}}" alt="could you find out me（你来找我啊）" width=1160 height=400 style="display: block;" /-->
+
+            </div>
+
+
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+</body>
+
+</html>
